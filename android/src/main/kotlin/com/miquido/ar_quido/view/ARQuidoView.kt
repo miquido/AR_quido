@@ -22,15 +22,15 @@ import java.util.Collections
 import javax.microedition.khronos.egl.*
 import javax.microedition.khronos.opengles.GL10
 
-@SuppressLint("ViewConstructor") //ScannerView is created only via primary constructor in ScannerViewFactory
-class ImageScannerView(
+@SuppressLint("ViewConstructor") //ARQuidoView is created only via primary constructor in ARQuidoViewFactory
+class ARQuidoView(
     context: Context?,
     private val viewId: Int,
     private val recognizer: ARImageRecognizer,
     private val methodChannel: MethodChannel,
 ) : GLSurfaceView(context), PlatformView {
     companion object {
-        private const val TAG = "ImageScannerView"
+        private const val TAG = "AR_QUIDO_VIEW"
     }
 
     private var shouldFlashlightBeOn = false

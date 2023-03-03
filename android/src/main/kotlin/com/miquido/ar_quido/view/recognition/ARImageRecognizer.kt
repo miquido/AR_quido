@@ -11,7 +11,7 @@ class ARImageRecognizer(private val imageNames: List<String>) {
     companion object {
         private const val REFERENCE_IMAGES_DIRECTORY_PATH = "assets/reference_images/"
         private const val REFERENCE_IMAGE_FILE_EXTENSION = ".jpg"
-        private const val TAG = "ARImageRecognizer"
+        private const val TAG = "AR_IMAGE_RECOGNIZER"
     }
 
     private var scheduler: DelayedCallbackScheduler? = null

@@ -5,7 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
 import cn.easyar.Engine
-import com.miquido.ar_quido.view.ImageScannerViewFactory
+import com.miquido.ar_quido.view.ARQuidoViewFactory
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -13,13 +13,13 @@ import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 class ARQuidoPlugin: FlutterPlugin, ActivityAware {
 
   companion object {
-    private const val VIEW_TYPE = "plugins.miquido.com/image_scanner_view_android"
-    private const val LOG_TAG = "IMAGE_RECOGNITION_SCANNER"
+    private const val VIEW_TYPE = "plugins.miquido.com/ar_quido_view_android"
+    private const val LOG_TAG = "AR_QUIDO"
   }
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     System.loadLibrary("EasyAR")
-    flutterPluginBinding.platformViewRegistry.registerViewFactory(VIEW_TYPE, ImageScannerViewFactory(flutterPluginBinding.binaryMessenger))
+    flutterPluginBinding.platformViewRegistry.registerViewFactory(VIEW_TYPE, ARQuidoViewFactory(flutterPluginBinding.binaryMessenger))
   }
 
 
@@ -58,7 +58,7 @@ class ARQuidoPlugin: FlutterPlugin, ActivityAware {
     }
     val metaData = appInfo.metaData
 
-    return metaData.getString("com.miquido.flutter_easy_ar.API_KEY")
+    return metaData.getString("com.miquido.ar_quido.API_KEY")
       ?: throw Error("No API_KEY found for EasyAR Sense")
   }
 }
