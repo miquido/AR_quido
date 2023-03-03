@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - image_recognition_scanner (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - image_recognition_scanner (from `.symlinks/plugins/image_recognition_scanner/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  image_recognition_scanner:
+    :path: ".symlinks/plugins/image_recognition_scanner/ios"
+
+SPEC CHECKSUMS:
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  image_recognition_scanner: 3689814523f4f121d272c9a06eea7755f22ab5b8
+
+PODFILE CHECKSUM: 30517025a2fecca2d72dac25f08abb5b9a8f1a56
+
+COCOAPODS: 1.11.3
