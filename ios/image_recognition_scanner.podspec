@@ -5,14 +5,16 @@
 Pod::Spec.new do |s|
   s.name             = 'AR_quido'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter project.'
+  s.summary          = 'AR Image recognition for Flutter'
   s.description      = <<-DESC
-A new Flutter project.
+A Flutter plugin that provides an image recognition scanner widget.
+Downloaded by pub (not CocoaPods)
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/miquido/AR_quido'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
-  s.source           = { :path => '.' }
+  s.author           = { 'Miquido Flutter Division' => 'hello@miquido.com' }
+  s.source           = { :http => 'https://github.com/miquido/ar_quido/tree/main/ios' }
+  s.documentation_url = 'https://pub.dev/packages/ar_quido'
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '13.0'

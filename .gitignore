@@ -28,3 +28,6 @@ migrate_working_dir/
 .dart_tool/
 .packages
 build/
+
+#Flutter Version Manager - https://fvm.app/docs/getting_started/overview
+.fvm/flutter_sdk
