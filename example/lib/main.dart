@@ -1,5 +1,5 @@
+import 'package:ar_quido/image_recognition_scanner.dart';
 import 'package:flutter/material.dart';
-import 'package:image_recognition_scanner/image_recognition_scanner.dart';
 
 void main() {
   runApp(const MyApp());
