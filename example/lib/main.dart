@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Stack(
           children: [
-            ImageScannerView(
+            ARQuidoView(
               referenceImageNames: const ['applandroid'],
               onImageDetected: _onImageDetected,
             ),

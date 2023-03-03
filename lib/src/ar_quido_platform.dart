@@ -1,25 +1,25 @@
 import 'package:ar_quido/ar_quido.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract class ImageRecognitionScannerPlatform extends PlatformInterface {
+abstract class ARQuidoPlatform extends PlatformInterface {
   /// Constructs a ImageRecognitionScannerPlatform.
-  ImageRecognitionScannerPlatform() : super(token: _token);
+  ARQuidoPlatform() : super(token: _token);
 
   // Required by the platform interface
   // ignore: no-object-declaration
   static final Object _token = Object();
 
-  static ImageRecognitionScannerPlatform _instance = ImageRecognitionScannerMethodChannel();
+  static ARQuidoPlatform _instance = ARQuidoMethodChannel();
 
-  /// The default instance of [ImageRecognitionScannerPlatform] to use.
+  /// The default instance of [ARQuidoPlatform] to use.
   ///
-  /// Defaults to [ImageRecognitionScannerPlatform].
-  static ImageRecognitionScannerPlatform get instance => _instance;
+  /// Defaults to [ARQuidoPlatform].
+  static ARQuidoPlatform get instance => _instance;
 
   /// Platform-specific implementations should set this with their own
-  /// platform-specific class that extends [ImageRecognitionScannerPlatform] when
+  /// platform-specific class that extends [ARQuidoPlatform] when
   /// they register themselves.
-  static set instance(ImageRecognitionScannerPlatform instance) {
+  static set instance(ARQuidoPlatform instance) {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }

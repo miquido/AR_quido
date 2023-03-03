@@ -5,11 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:stream_transform/stream_transform.dart';
 
-/// An implementation of [ImageRecognitionScannerPlatform] that uses method channels.
-class ImageRecognitionScannerMethodChannel extends ImageRecognitionScannerPlatform {
+/// An implementation of [ARQuidoPlatform] that uses method channels.
+class ARQuidoMethodChannel extends ARQuidoPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('plugins.miquido.com/image_recognition_scanner');
+  final methodChannel = const MethodChannel('plugins.miquido.com/ar_quido');
 
   final StreamController<ScannerEvent> _scannerEventStreamController = StreamController<ScannerEvent>.broadcast();
 

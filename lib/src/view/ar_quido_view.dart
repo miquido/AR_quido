@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-class ImageScannerView extends StatefulWidget {
-  const ImageScannerView({
+class ARQuidoView extends StatefulWidget {
+  const ARQuidoView({
     required this.referenceImageNames,
     required this.onImageDetected,
     this.onViewCreated,
@@ -20,7 +20,7 @@ class ImageScannerView extends StatefulWidget {
   });
 
   final List<String> referenceImageNames;
-  final void Function(ImageScannerViewController controller)? onViewCreated;
+  final void Function(ARQuidoViewController controller)? onViewCreated;
   final void Function(String? imageName) onImageDetected;
   final VoidCallback? onRecognitionStarted;
   final VoidCallback? onRecognitionPaused;
@@ -31,11 +31,11 @@ class ImageScannerView extends StatefulWidget {
   static const String _iOSViewType = 'plugins.miquido.com/image_scanner_view_ios';
 
   @override
-  State<ImageScannerView> createState() => ImageScannerViewState();
+  State<ARQuidoView> createState() => ARQuidoViewState();
 }
 
-class ImageScannerViewState extends State<ImageScannerView> {
-  ImageScannerViewController? _controller;
+class ARQuidoViewState extends State<ARQuidoView> {
+  ARQuidoViewController? _controller;
 
   @override
   void dispose() {
@@ -49,7 +49,7 @@ class ImageScannerViewState extends State<ImageScannerView> {
     final viewId = params.id;
     return PlatformViewsService.initAndroidView(
       id: viewId,
-      viewType: ImageScannerView._androidViewType,
+      viewType: ARQuidoView._androidViewType,
       layoutDirection: TextDirection.ltr,
       creationParams: _creationParams,
       creationParamsCodec: const StandardMessageCodec(),
@@ -60,7 +60,7 @@ class ImageScannerViewState extends State<ImageScannerView> {
   }
 
   void _onPlatformViewCreated(int id) {
-    final controller = ImageScannerViewController(this);
+    final controller = ARQuidoViewController(this);
     widget.onViewCreated?.call(controller);
   }
 
@@ -72,7 +72,7 @@ class ImageScannerViewState extends State<ImageScannerView> {
   Widget build(BuildContext context) {
     if (Platform.isAndroid) {
       return PlatformViewLink(
-        viewType: ImageScannerView._androidViewType,
+        viewType: ARQuidoView._androidViewType,
         surfaceFactory: (context, controller) {
           return AndroidViewSurface(
             controller: controller as AndroidViewController,
@@ -84,7 +84,7 @@ class ImageScannerViewState extends State<ImageScannerView> {
       );
     } else if (Platform.isIOS) {
       return UiKitView(
-        viewType: ImageScannerView._iOSViewType,
+        viewType: ARQuidoView._iOSViewType,
         layoutDirection: TextDirection.ltr,
         creationParams: _creationParams,
         creationParamsCodec: const StandardMessageCodec(),

@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  final platform = ImageRecognitionScannerMethodChannel();
+  final platform = ARQuidoMethodChannel();
   final log = <MethodCall>[];
 
   setUpAll(platform.init);
@@ -120,7 +120,7 @@ Future<void> _sendPlatformMessage(
 ) async {
   final byteData = const StandardMethodCodec().encodeMethodCall(MethodCall(method, data));
   await TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger.handlePlatformMessage(
-    'plugins.miquido.com/image_recognition_scanner',
+    'plugins.miquido.com/ar_quido',
     byteData,
     (data) {},
   );

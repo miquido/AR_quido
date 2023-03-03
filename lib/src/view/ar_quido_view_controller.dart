@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:ar_quido/ar_quido.dart';
 
-class ImageScannerViewController {
-  ImageScannerViewController(this._scannerViewState) {
-    ImageRecognitionScannerPlatform.instance.init();
+class ARQuidoViewController {
+  ARQuidoViewController(this._scannerViewState) {
+    ARQuidoPlatform.instance.init();
     _connectStreams();
   }
 
-  final ImageScannerViewState _scannerViewState;
+  final ARQuidoViewState _scannerViewState;
   final List<StreamSubscription<dynamic>> _subscriptions = [];
 
   void dispose() {
@@ -18,13 +18,13 @@ class ImageScannerViewController {
   }
 
   Future<void> toggleFlashlight({required bool shouldTurnOn}) {
-    return ImageRecognitionScannerPlatform.instance.toggleFlashlight(
+    return ARQuidoPlatform.instance.toggleFlashlight(
       shouldTurnOn: shouldTurnOn,
     );
   }
 
   void _connectStreams() {
-    final platformInstance = ImageRecognitionScannerPlatform.instance;
+    final platformInstance = ARQuidoPlatform.instance;
     final scannerViewWidget = _scannerViewState.widget;
     if (scannerViewWidget.onRecognitionStarted != null) {
       _subscriptions.add(
