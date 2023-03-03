@@ -1,5 +1,4 @@
-import 'package:image_recognition_scanner/image_recognition_scanner_method_channel.dart';
-import 'package:image_recognition_scanner/src/types/scanner_event.dart';
+import 'package:ar_quido/ar_quido.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract class ImageRecognitionScannerPlatform extends PlatformInterface {
@@ -10,8 +9,7 @@ abstract class ImageRecognitionScannerPlatform extends PlatformInterface {
   // ignore: no-object-declaration
   static final Object _token = Object();
 
-  static ImageRecognitionScannerPlatform _instance =
-      ImageRecognitionScannerMethodChannel();
+  static ImageRecognitionScannerPlatform _instance = ImageRecognitionScannerMethodChannel();
 
   /// The default instance of [ImageRecognitionScannerPlatform] to use.
   ///

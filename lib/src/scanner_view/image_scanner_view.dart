@@ -1,11 +1,11 @@
 import 'dart:io';
 
+import 'package:ar_quido/ar_quido.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:image_recognition_scanner/image_recognition_scanner.dart';
 
 class ImageScannerView extends StatefulWidget {
   const ImageScannerView({

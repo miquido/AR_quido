@@ -1,5 +1,5 @@
-name: image_recognition_scanner_example
-description: Demonstrates how to use the image_recognition_scanner plugin.
+name: ar_quido_example
+description: Demonstrates how to use the ar_quido plugin.
 publish_to: 'none'
 
 environment:

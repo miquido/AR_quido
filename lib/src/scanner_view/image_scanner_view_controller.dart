@@ -1,7 +1,6 @@
 import 'dart:async';
 
-import 'package:image_recognition_scanner/image_recognition_scanner.dart';
-import 'package:image_recognition_scanner/image_recognition_scanner_platform.dart';
+import 'package:ar_quido/ar_quido.dart';
 
 class ImageScannerViewController {
   ImageScannerViewController(this._scannerViewState) {

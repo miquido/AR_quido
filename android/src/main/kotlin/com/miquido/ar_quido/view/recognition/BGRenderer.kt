@@ -1,4 +1,4 @@
-package com.miquido.flutter_easy_ar.scanner.recognition
+package com.miquido.ar_quido.view.recognition
 
 import android.opengl.GLES30
 import android.util.Log

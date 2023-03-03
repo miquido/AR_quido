@@ -1,4 +1,6 @@
-package com.miquido.image_recognition_scanner.view.recognition
+package com.miquido.ar_quido.view.recognition
+
+import com.miquido.ar_quido.view.recognition.ErrorCode
 
 interface ImageRecognitionListener {
     fun onRecognitionStarted()

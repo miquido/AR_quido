@@ -1,21 +1,17 @@
 import 'dart:async';
 
+import 'package:ar_quido/ar_quido.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:image_recognition_scanner/image_recognition_scanner_platform.dart';
-import 'package:image_recognition_scanner/src/types/scanner_event.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 /// An implementation of [ImageRecognitionScannerPlatform] that uses method channels.
-class ImageRecognitionScannerMethodChannel
-    extends ImageRecognitionScannerPlatform {
+class ImageRecognitionScannerMethodChannel extends ImageRecognitionScannerPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel =
-      const MethodChannel('plugins.miquido.com/image_recognition_scanner');
+  final methodChannel = const MethodChannel('plugins.miquido.com/image_recognition_scanner');
 
-  final StreamController<ScannerEvent> _scannerEventStreamController =
-      StreamController<ScannerEvent>.broadcast();
+  final StreamController<ScannerEvent> _scannerEventStreamController = StreamController<ScannerEvent>.broadcast();
 
   @override
   void init() {
@@ -38,8 +34,7 @@ class ImageRecognitionScannerMethodChannel
   }
 
   @override
-  Stream<ImageDetectedEvent> onImageDetected() =>
-      _scannerEventStreamController.stream.whereType<ImageDetectedEvent>();
+  Stream<ImageDetectedEvent> onImageDetected() => _scannerEventStreamController.stream.whereType<ImageDetectedEvent>();
 
   @override
   Stream<RecognitionStartedEvent> onRecognitionStarted() =>
@@ -54,8 +49,7 @@ class ImageRecognitionScannerMethodChannel
       _scannerEventStreamController.stream.whereType<RecognitionPausedEvent>();
 
   @override
-  Stream<ErrorEvent> onError() =>
-      _scannerEventStreamController.stream.whereType<ErrorEvent>();
+  Stream<ErrorEvent> onError() => _scannerEventStreamController.stream.whereType<ErrorEvent>();
 
   Future<void> _handleMethodCall(MethodCall call) async {
     switch (call.method) {

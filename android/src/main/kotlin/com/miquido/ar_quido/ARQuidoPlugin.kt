@@ -1,42 +1,30 @@
-package com.miquido.image_recognition_scanner
+package com.miquido.ar_quido
 
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
 import cn.easyar.Engine
-import com.miquido.image_recognition_scanner.view.ImageScannerViewFactory
+import com.miquido.ar_quido.view.ImageScannerViewFactory
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 
-class ImageRecognitionScannerPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
-  private lateinit var channel : MethodChannel
+class ARQuidoPlugin: FlutterPlugin, ActivityAware {
 
   companion object {
     private const val VIEW_TYPE = "plugins.miquido.com/image_scanner_view_android"
-    private const val METHOD_CHANNEL_NAME = "image_recognition_scanner"
     private const val LOG_TAG = "IMAGE_RECOGNITION_SCANNER"
   }
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     System.loadLibrary("EasyAR")
     flutterPluginBinding.platformViewRegistry.registerViewFactory(VIEW_TYPE, ImageScannerViewFactory(flutterPluginBinding.binaryMessenger))
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, METHOD_CHANNEL_NAME)
-    channel.setMethodCallHandler(this)
   }
 
-  override fun onMethodCall(call: MethodCall, result: Result) {
-    result.notImplemented()
-
-  }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-    channel.setMethodCallHandler(null)
+    //no-op
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -56,7 +44,7 @@ class ImageRecognitionScannerPlugin: FlutterPlugin, MethodCallHandler, ActivityA
   }
 
   override fun onDetachedFromActivity() {
-    channel.setMethodCallHandler(null)
+    //no-op
   }
 
   private fun getApiKey(activity: Activity): String {

@@ -31,3 +31,8 @@ build/
 
 #Flutter Version Manager - https://fvm.app/docs/getting_started/overview
 .fvm/flutter_sdk
+
+# Generated files related
+*.g.dart
+*.freezed.dart
+*.mocks.dart

@@ -1,4 +1,4 @@
-group 'com.miquido.image_recognition_scanner'
+group 'com.miquido.ar_quido'
 version '1.0-SNAPSHOT'
 
 buildscript {

@@ -1,4 +1,4 @@
-package com.miquido.image_recognition_scanner.view
+package com.miquido.ar_quido.view
 
 
 import android.annotation.SuppressLint
@@ -12,9 +12,9 @@ import android.view.Display
 import android.view.Surface
 import android.view.View
 import cn.easyar.Engine
-import com.miquido.image_recognition_scanner.view.recognition.ARImageRecognizer
-import com.miquido.image_recognition_scanner.view.recognition.ErrorCode
-import com.miquido.image_recognition_scanner.view.recognition.ImageRecognitionListener
+import com.miquido.ar_quido.view.recognition.ARImageRecognizer
+import com.miquido.ar_quido.view.recognition.ErrorCode
+import com.miquido.ar_quido.view.recognition.ImageRecognitionListener
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView

@@ -1,7 +1,7 @@
-package com.miquido.image_recognition_scanner.view
+package com.miquido.ar_quido.view
 
 import android.content.Context
-import com.miquido.image_recognition_scanner.view.recognition.ARImageRecognizer
+import com.miquido.ar_quido.view.recognition.ARImageRecognizer
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.StandardMessageCodec

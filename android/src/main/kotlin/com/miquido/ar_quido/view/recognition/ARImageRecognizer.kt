@@ -1,10 +1,8 @@
-package com.miquido.image_recognition_scanner.view.recognition
+package com.miquido.ar_quido.view.recognition
 
 import android.opengl.GLES30
 import android.util.Log
 import cn.easyar.*
-import com.miquido.flutter_easy_ar.scanner.recognition.BGRenderer
-import com.miquido.flutter_easy_ar.scanner.recognition.BoxRenderer
 import io.flutter.FlutterInjector
 import java.nio.ByteBuffer
 
