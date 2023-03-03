@@ -1,15 +1,8 @@
-//
-//  FLARImageScannerView.swift
-//  Runner
-//
-//  Created by Piotr Mitkowski on 03/02/2023.
-//
-
 import Foundation
 import Flutter
 
-class FLARImageScannerView: NSObject, FlutterPlatformView {
-    private var viewController: ARImageScannerViewController
+class ARQuidoView: NSObject, FlutterPlatformView {
+    private var viewController: ARQuidoViewController
     
     init(
         frame: CGRect,
@@ -20,9 +13,9 @@ class FLARImageScannerView: NSObject, FlutterPlatformView {
         guard let creationParams = args as? Dictionary<String, Any?>, let referenceImageNames = creationParams["referenceImageNames"] as? Array<String> else {
             fatalError("Could not extract story names from creation params")
         }
-        let channelName = "plugins.miquido.com/image_recognition_scanner"
+        let channelName = "plugins.miquido.com/ar_quido"
         let channel = FlutterMethodChannel(name: channelName, binaryMessenger: messenger)
-        viewController = ARImageScannerViewController(referenceImageNames: referenceImageNames, methodChannel: channel)
+        viewController = ARQuidoViewController(referenceImageNames: referenceImageNames, methodChannel: channel)
         super.init()
     }
     

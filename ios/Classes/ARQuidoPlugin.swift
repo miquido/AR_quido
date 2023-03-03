@@ -2,10 +2,10 @@ import Flutter
 import UIKit
 
 public class ARQuidoPlugin: NSObject, FlutterPlugin {
-    private static let scannerViewId = "plugins.miquido.com/image_scanner_view_ios"
+    private static let scannerViewId = "plugins.miquido.com/ar_quido_view_ios"
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let factory = FLARImageScannerViewFactory(messenger: registrar.messenger())
+        let factory = ARQuidoViewFactory(messenger: registrar.messenger())
         registrar.register(factory, withId: scannerViewId)
     }
 }

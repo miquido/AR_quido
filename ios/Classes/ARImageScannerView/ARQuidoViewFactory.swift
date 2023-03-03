@@ -1,14 +1,7 @@
-//
-//  FLARImageScannerViewFactory.swift
-//  image_recognition_scanner
-//
-//  Created by Piotr Mitkowski on 02/03/2023.
-//
-
 import Foundation
 import Flutter
 
-class FLARImageScannerViewFactory: NSObject, FlutterPlatformViewFactory {
+class ARQuidoViewFactory: NSObject, FlutterPlatformViewFactory {
     private var messenger: FlutterBinaryMessenger
     
     init(messenger: FlutterBinaryMessenger) {
@@ -21,7 +14,7 @@ class FLARImageScannerViewFactory: NSObject, FlutterPlatformViewFactory {
         viewIdentifier viewId: Int64,
         arguments args: Any?
     ) -> FlutterPlatformView {
-        return FLARImageScannerView(
+        return ARQuidoView(
             frame: frame,
             viewIdentifier: viewId,
             arguments: args,

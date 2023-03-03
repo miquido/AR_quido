@@ -1,10 +1,3 @@
-//
-//  ARImageScannerViewController.swift
-//  Runner
-//
-//  Created by Piotr Mitkowski on 02/02/2023.
-//
-
 import UIKit
 import ARKit
 import SceneKit
@@ -17,7 +10,7 @@ protocol ImageRecognitionDelegate: AnyObject {
     func onDetect(imageKey: String)
 }
 
-class ARImageScannerViewController: UIViewController {
+class ARQuidoViewController: UIViewController {
     
     var sceneView: ARSCNView!
     
@@ -105,7 +98,7 @@ class ARImageScannerViewController: UIViewController {
     }
 }
 
-extension ARImageScannerViewController: ARSCNViewDelegate {
+extension ARQuidoViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let imageAnchor = anchor as? ARImageAnchor else { return }
@@ -143,7 +136,7 @@ extension ARImageScannerViewController: ARSCNViewDelegate {
     }
 }
 
-extension ARImageScannerViewController: ARSessionDelegate {
+extension ARQuidoViewController: ARSessionDelegate {
     func session(_ session: ARSession, didFailWithError error: Error) {
         guard error is ARError else { return }
         
@@ -195,7 +188,7 @@ extension ARImageScannerViewController: ARSessionDelegate {
 
 // MARK: PlatformView interface implementation
 
-extension ARImageScannerViewController {
+extension ARQuidoViewController {
     private func handleMethodCall(call: FlutterMethodCall, result: FlutterResult) {
         if call.method == "scanner#toggleFlashlight" {
             let arguments = call.arguments as? Dictionary<String, Any?>
@@ -217,7 +210,7 @@ extension ARImageScannerViewController {
                 camera.torchMode = shouldTurnOn ? .on : .off
                 camera.unlockForConfiguration()
             } catch {
-                print("Torch cound not be used")
+                print("Torch could not be used")
             }
         } else {
             print("Torch is not available")
@@ -225,7 +218,7 @@ extension ARImageScannerViewController {
     }
 }
 
-extension ARImageScannerViewController: ImageRecognitionDelegate {
+extension ARQuidoViewController: ImageRecognitionDelegate {
     func onRecognitionPaused() {
         methodChannel.invokeMethod("scanner#recognitionPaused", arguments: nil)
     }
