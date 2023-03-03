@@ -27,8 +27,8 @@ class ARQuidoView extends StatefulWidget {
   final VoidCallback? onRecognitionResumed;
   final void Function(String error)? onError;
 
-  static const String _androidViewType = 'plugins.miquido.com/image_scanner_view_android';
-  static const String _iOSViewType = 'plugins.miquido.com/image_scanner_view_ios';
+  static const String _androidViewType = 'plugins.miquido.com/ar_quido_view_android';
+  static const String _iOSViewType = 'plugins.miquido.com/ar_quido_view_ios';
 
   @override
   State<ARQuidoView> createState() => ARQuidoViewState();
@@ -92,7 +92,7 @@ class ARQuidoViewState extends State<ARQuidoView> {
         onPlatformViewCreated: _onPlatformViewCreated,
       );
     } else {
-      throw Exception('$defaultTargetPlatform is not supported by ScannerView');
+      throw Exception('$defaultTargetPlatform is not supported by ARQuidoView');
     }
   }
 }

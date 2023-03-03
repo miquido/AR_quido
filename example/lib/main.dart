@@ -15,7 +15,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String? _recognizedImage;
 
-  void _onImageDetected(String? imageName) {
+  void _onImageDetected(BuildContext context, String? imageName) {
     if (imageName != null && _recognizedImage != imageName) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -36,13 +36,17 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        body: Stack(
-          children: [
-            ARQuidoView(
-              referenceImageNames: const ['applandroid'],
-              onImageDetected: _onImageDetected,
-            ),
-          ],
+        body: Builder(
+          builder: (context) {
+            return Stack(
+              children: [
+                ARQuidoView(
+                  referenceImageNames: const ['applandroid'],
+                  onImageDetected: (imageName) => _onImageDetected(context, imageName),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
