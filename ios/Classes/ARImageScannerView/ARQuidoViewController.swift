@@ -8,6 +8,7 @@ protocol ImageRecognitionDelegate: AnyObject {
     func onRecognitionPaused()
     func onRecognitionResumed()
     func onDetect(imageKey: String)
+    func onDetectedImageTapped(imageKey: String)
 }
 
 class ARQuidoViewController: UIViewController {
@@ -47,6 +48,8 @@ class ARQuidoViewController: UIViewController {
         sceneView = ARSCNView(frame: CGRect.zero)
         sceneView.delegate = self
         sceneView.session.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        sceneView.addGestureRecognizer(tapGesture)
         view = sceneView
     }
     
@@ -60,6 +63,16 @@ class ARQuidoViewController: UIViewController {
         super.viewWillDisappear(animated)
         session.pause()
         onRecognitionPaused()
+    }
+    
+    @objc
+    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        let location = gestureRecognize.location(in: sceneView)
+        let hitResults = sceneView.hitTest(location, options: [:])
+        if hitResults.count > 0, let tappedImageName = hitResults[0].node.name {
+            onDetectedImageTapped(imageKey: tappedImageName)
+        }
+        
     }
     
     // MARK: - Session management (Image detection setup)
@@ -107,9 +120,11 @@ extension ARQuidoViewController: ARSCNViewDelegate {
         }
         
         let referenceImage = imageAnchor.referenceImage
+        let imageName = referenceImage.name ?? ""
         updateQueue.async {
             let plane = SCNBox(width: referenceImage.physicalSize.width, height: referenceImage.physicalSize.height, length: 0.3, chamferRadius: 0.01)
             let planeNode = SCNNode(geometry: plane)
+            planeNode.name = imageName
             planeNode.opacity = 0.75
             planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor(red: 205 / 255, green: 207 / 255, blue: 1.0, alpha: 1.0)
             //rotate plane to match assumed image orientation
@@ -120,7 +135,6 @@ extension ARQuidoViewController: ARSCNViewDelegate {
         }
         
         DispatchQueue.main.async {
-            let imageName = referenceImage.name ?? ""
             self.onDetect(imageKey: imageName)
         }
     }
@@ -233,5 +247,9 @@ extension ARQuidoViewController: ImageRecognitionDelegate {
     
     func onDetect(imageKey: String) {
         methodChannel.invokeMethod("scanner#onImageDetected", arguments: ["imageName": imageKey])
+    }
+    
+    func onDetectedImageTapped(imageKey: String) {
+        methodChannel.invokeMethod("scanner#onDetectedImageTapped", arguments: ["imageName": imageKey])
     }
 }

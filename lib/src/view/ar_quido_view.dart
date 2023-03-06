@@ -11,6 +11,7 @@ class ARQuidoView extends StatefulWidget {
   const ARQuidoView({
     required this.referenceImageNames,
     required this.onImageDetected,
+    this.onDetectedImageTapped,
     this.onViewCreated,
     this.onRecognitionStarted,
     this.onRecognitionPaused,
@@ -22,6 +23,7 @@ class ARQuidoView extends StatefulWidget {
   final List<String> referenceImageNames;
   final void Function(ARQuidoViewController controller)? onViewCreated;
   final void Function(String? imageName) onImageDetected;
+  final void Function(String? imageName)? onDetectedImageTapped;
   final VoidCallback? onRecognitionStarted;
   final VoidCallback? onRecognitionPaused;
   final VoidCallback? onRecognitionResumed;
