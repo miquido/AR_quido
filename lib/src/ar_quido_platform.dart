@@ -36,6 +36,10 @@ abstract class ARQuidoPlatform extends PlatformInterface {
     throw UnimplementedError('onImageDetected() has not been implemented.');
   }
 
+  Stream<ImageTappedEvent> onDetectedImageTapped() {
+    throw UnimplementedError('onImageDetected() has not been implemented.');
+  }
+
   Stream<RecognitionStartedEvent> onRecognitionStarted() {
     throw UnimplementedError(
       'onRecognitionStarted() has not been implemented.',

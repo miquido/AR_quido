@@ -6,6 +6,12 @@ class ImageDetectedEvent extends ScannerEvent {
   final String? imageName;
 }
 
+class ImageTappedEvent extends ScannerEvent {
+  ImageTappedEvent(this.imageName);
+
+  final String? imageName;
+}
+
 class RecognitionStartedEvent extends ScannerEvent {}
 
 class RecognitionResumedEvent extends ScannerEvent {}

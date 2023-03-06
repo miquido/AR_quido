@@ -37,6 +37,10 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
   Stream<ImageDetectedEvent> onImageDetected() => _scannerEventStreamController.stream.whereType<ImageDetectedEvent>();
 
   @override
+  Stream<ImageTappedEvent> onDetectedImageTapped() =>
+      _scannerEventStreamController.stream.whereType<ImageTappedEvent>();
+
+  @override
   Stream<RecognitionStartedEvent> onRecognitionStarted() =>
       _scannerEventStreamController.stream.whereType<RecognitionStartedEvent>();
 
@@ -66,6 +70,11 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
         final arguments = (call.arguments as Map).cast<String, String?>();
         final imageName = arguments['imageName'];
         _scannerEventStreamController.add(ImageDetectedEvent(imageName));
+        break;
+      case 'scanner#onDetectedImageTapped':
+        final arguments = (call.arguments as Map).cast<String, String?>();
+        final imageName = arguments['imageName'];
+        _scannerEventStreamController.add(ImageTappedEvent(imageName));
         break;
       case 'scanner#error':
         final arguments = (call.arguments as Map).cast<String, String?>();
