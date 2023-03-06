@@ -56,8 +56,10 @@ class _MyAppState extends State<MyApp> {
               children: [
                 ARQuidoView(
                   referenceImageNames: const ['applandroid'],
-                  onImageDetected: (imageName) => _onImageDetected(context, imageName),
-                  onDetectedImageTapped: (imageName) => _onDetectedImageTapped(context, imageName),
+                  onImageDetected: (imageName) =>
+                      _onImageDetected(context, imageName),
+                  onDetectedImageTapped: (imageName) =>
+                      _onDetectedImageTapped(context, imageName),
                 ),
               ],
             );

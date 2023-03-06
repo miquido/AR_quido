@@ -29,7 +29,8 @@ class ARQuidoView extends StatefulWidget {
   final VoidCallback? onRecognitionResumed;
   final void Function(String error)? onError;
 
-  static const String _androidViewType = 'plugins.miquido.com/ar_quido_view_android';
+  static const String _androidViewType =
+      'plugins.miquido.com/ar_quido_view_android';
   static const String _iOSViewType = 'plugins.miquido.com/ar_quido_view_ios';
 
   @override

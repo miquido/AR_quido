@@ -12,7 +12,8 @@ void main() {
   setUpAll(platform.init);
 
   setUp(() {
-    TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger.setMockMethodCallHandler(
+    TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+        .setMockMethodCallHandler(
       platform.methodChannel,
       (message) async {
         log.add(message);
@@ -51,7 +52,8 @@ void main() {
   });
 
   test('Recognition started event is fired correctly', () async {
-    final recognitionStartedStream = StreamQueue(platform.onRecognitionStarted());
+    final recognitionStartedStream =
+        StreamQueue(platform.onRecognitionStarted());
     await _sendPlatformMessage('scanner#start', <String, Object?>{});
 
     final receivedMessage = await recognitionStartedStream.next;
@@ -60,7 +62,8 @@ void main() {
   });
 
   test('Recognition resumed event is fired correctly', () async {
-    final recognitionResumedStream = StreamQueue(platform.onRecognitionResumed());
+    final recognitionResumedStream =
+        StreamQueue(platform.onRecognitionResumed());
     await _sendPlatformMessage(
       'scanner#recognitionResumed',
       <String, Object?>{},
@@ -118,8 +121,10 @@ Future<void> _sendPlatformMessage(
   String method,
   Map<dynamic, dynamic> data,
 ) async {
-  final byteData = const StandardMethodCodec().encodeMethodCall(MethodCall(method, data));
-  await TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger.handlePlatformMessage(
+  final byteData =
+      const StandardMethodCodec().encodeMethodCall(MethodCall(method, data));
+  await TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+      .handlePlatformMessage(
     'plugins.miquido.com/ar_quido',
     byteData,
     (data) {},

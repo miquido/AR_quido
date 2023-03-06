@@ -11,7 +11,8 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('plugins.miquido.com/ar_quido');
 
-  final StreamController<ScannerEvent> _scannerEventStreamController = StreamController<ScannerEvent>.broadcast();
+  final StreamController<ScannerEvent> _scannerEventStreamController =
+      StreamController<ScannerEvent>.broadcast();
 
   @override
   void init() {
@@ -34,7 +35,8 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
   }
 
   @override
-  Stream<ImageDetectedEvent> onImageDetected() => _scannerEventStreamController.stream.whereType<ImageDetectedEvent>();
+  Stream<ImageDetectedEvent> onImageDetected() =>
+      _scannerEventStreamController.stream.whereType<ImageDetectedEvent>();
 
   @override
   Stream<ImageTappedEvent> onDetectedImageTapped() =>
@@ -53,7 +55,8 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
       _scannerEventStreamController.stream.whereType<RecognitionPausedEvent>();
 
   @override
-  Stream<ErrorEvent> onError() => _scannerEventStreamController.stream.whereType<ErrorEvent>();
+  Stream<ErrorEvent> onError() =>
+      _scannerEventStreamController.stream.whereType<ErrorEvent>();
 
   Future<void> _handleMethodCall(MethodCall call) async {
     switch (call.method) {
