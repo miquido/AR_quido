@@ -2,20 +2,26 @@ PODS:
   - ar_quido (0.0.1):
     - Flutter
   - Flutter (1.0.0)
+  - permission_handler_apple (9.0.4):
+    - Flutter
 
 DEPENDENCIES:
   - ar_quido (from `.symlinks/plugins/ar_quido/ios`)
   - Flutter (from `Flutter`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
 
 EXTERNAL SOURCES:
   ar_quido:
     :path: ".symlinks/plugins/ar_quido/ios"
   Flutter:
     :path: Flutter
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
 
 SPEC CHECKSUMS:
   ar_quido: 861cff4b7e09f8f4169ea125d8a8e1440e33c904
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
 
 PODFILE CHECKSUM: 30517025a2fecca2d72dac25f08abb5b9a8f1a56
 

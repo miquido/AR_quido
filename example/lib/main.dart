@@ -1,7 +1,10 @@
 import 'package:ar_quido/ar_quido.dart';
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Permission.camera.request();
   runApp(const MyApp());
 }
 
