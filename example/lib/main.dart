@@ -32,6 +32,17 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _onDetectedImageTapped(BuildContext context, String? imageName) {
+    if (imageName != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Tapped on image: $imageName'),
+          duration: const Duration(milliseconds: 1500),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -46,6 +57,7 @@ class _MyAppState extends State<MyApp> {
                 ARQuidoView(
                   referenceImageNames: const ['applandroid'],
                   onImageDetected: (imageName) => _onImageDetected(context, imageName),
+                  onDetectedImageTapped: (imageName) => _onDetectedImageTapped(context, imageName),
                 ),
               ],
             );
