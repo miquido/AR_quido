@@ -17,7 +17,7 @@ Add the dependency in your `pubspec.yaml`:
 - directly in pubspec.yaml:
   ```yaml
   dependencies:
-     ar_quido: 0.1.0
+     ar_quido: 0.1.1
   ```
 ### Android
 Since the Android version depends on , you need to sign up on their page and obtain an API key. After doing so, provide the key in Android Manifest file as `application`'s metadata:
