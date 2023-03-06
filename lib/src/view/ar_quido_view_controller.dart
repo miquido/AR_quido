@@ -24,6 +24,34 @@ class ARQuidoViewController {
   }
 
   void _connectStreams() {
+    _connectLifecycleEventStreams();
+
+    final platformInstance = ARQuidoPlatform.instance;
+    final scannerViewWidget = _scannerViewState.widget;
+    if (scannerViewWidget.onError != null) {
+      _subscriptions.add(
+        platformInstance
+            .onError()
+            .listen((event) => _scannerViewState.widget.onError!(event.error)),
+      );
+    }
+    if (scannerViewWidget.onDetectedImageTapped != null) {
+      _subscriptions.add(
+        platformInstance.onDetectedImageTapped().listen(
+              (event) =>
+                  scannerViewWidget.onDetectedImageTapped!(event.imageName),
+            ),
+      );
+    }
+
+    _subscriptions.add(
+      platformInstance.onImageDetected().listen(
+            (event) => scannerViewWidget.onImageDetected(event.imageName),
+          ),
+    );
+  }
+
+  void _connectLifecycleEventStreams() {
     final platformInstance = ARQuidoPlatform.instance;
     final scannerViewWidget = _scannerViewState.widget;
     if (scannerViewWidget.onRecognitionStarted != null) {
@@ -47,23 +75,5 @@ class ARQuidoViewController {
             .listen((event) => _scannerViewState.widget.onRecognitionPaused!()),
       );
     }
-    if (scannerViewWidget.onError != null) {
-      _subscriptions.add(
-        platformInstance
-            .onError()
-            .listen((event) => _scannerViewState.widget.onError!(event.error)),
-      );
-    }
-    if (scannerViewWidget.onDetectedImageTapped != null) {
-      _subscriptions.add(
-        platformInstance.onDetectedImageTapped().listen((event) =>
-            scannerViewWidget.onDetectedImageTapped!(event.imageName)),
-      );
-    }
-
-    _subscriptions.add(
-      platformInstance.onImageDetected().listen(
-          (event) => scannerViewWidget.onImageDetected(event.imageName)),
-    );
   }
 }
