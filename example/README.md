@@ -1,6 +1,6 @@
-# image_recognition_scanner_example
+# ar_quido_example
 
-Demonstrates how to use the image_recognition_scanner plugin.
+Demonstrates how to use the ar_quido plugin.
 
 ## Getting Started
 
