@@ -20,7 +20,7 @@ Add the dependency in your `pubspec.yaml`:
 - directly in pubspec.yaml:
   ```yaml
   dependencies:
-     ar_quido: 0.1.1
+     ar_quido: 0.1.3
   ```
 ### Android
 Since the Android version depends on the EasyAR solution, you need to
