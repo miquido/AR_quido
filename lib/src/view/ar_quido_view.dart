@@ -9,6 +9,8 @@ import 'package:flutter/services.dart';
 
 /// A widget which displays a camera stream with image recognition features enabled.
 class ARQuidoView extends StatefulWidget {
+  /// Creates a widget displaying a camera stream and handling the image
+  /// recognition.
   const ARQuidoView({
     required this.referenceImageNames,
     required this.onImageDetected,
@@ -65,6 +67,10 @@ class ARQuidoView extends StatefulWidget {
   State<ARQuidoView> createState() => ARQuidoViewState();
 }
 
+/// Scanner's view state that's used by the [ARQuidoViewController] instance
+/// to to connect widget's arguments with the platform interface.
+///
+/// It should be used only inside [ARQuidoViewController] instance.
 class ARQuidoViewState extends State<ARQuidoView> {
   ARQuidoViewController? _controller;
 

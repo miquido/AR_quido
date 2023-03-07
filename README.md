@@ -2,7 +2,10 @@ _Ahoy, me hearties! Set sail on the high seas of image recognition with our Flut
 
 # 🏴‍☠️ ar_quido 🏴‍☠️
 
-Image recognition using Augmented Reality (AR) features for mobile Flutter apps. It uses [EasyAR Sense](https://www.easyar.com/view/sdk.html) on Android and native [ARKit](https://developer.apple.com/documentation/arkit/content_anchors/detecting_images_in_an_ar_experience) on iOS.
+Image recognition using Augmented Reality (AR) features for mobile Flutter apps.
+It uses [EasyAR Sense](https://www.easyar.com/view/sdk.html) on Android and native
+[ARKit](https://developer.apple.com/documentation/arkit/content_anchors/detecting_images_in_an_ar_experience)
+on iOS.
 
 The plugin has been built by Flutter Division at [Miquido Software development company](https://www.miquido.com).
 
@@ -20,7 +23,10 @@ Add the dependency in your `pubspec.yaml`:
      ar_quido: 0.1.1
   ```
 ### Android
-Since the Android version depends on , you need to sign up on their page and obtain an API key. After doing so, provide the key in Android Manifest file as `application`'s metadata:
+Since the Android version depends on the EasyAR solution, you need to
+[sign up](https://www.easyar.com/view/signUp.html) on their page and obtain 
+an API key. After doing so, provide the key in Android Manifest file as 
+`application`'s metadata:
 ```xml
 <meta-data
            android:name="com.miquido.ar_quido.API_KEY"
@@ -28,21 +34,26 @@ Since the Android version depends on , you need to sign up on their page and obt
 ```
 
 ### iOS
-`ARKit` uses the device camera, so do not forget to provide the `NSCameraUsageDescription` in Info.plist:
+`ARKit` uses the device camera, so do not forget to provide the `NSCameraUsageDescription`
+in Info.plist:
 ```xml
 <key>NSCameraUsageDescription</key>
 <string>Describe why your app needs camera (AR) here.</string>
 ```
 
-Also make sure, that your deployment target in project settings is set to 13.0. Set the same version in `ios/Podfile`:
+Also make sure, that your deployment target in project settings is set to 13.0.
+Set the same version in `ios/Podfile`:
 ```ruby
 platform :ios, '13.0'
 ```
 
 ## Usage 🌴
-1. Put your reference images inside `assets/reference_images` directory (make sure to reference them in `pubspec.yaml`).
+1. Put your reference images inside `assets/reference_images` directory (make 
+sure to reference them in `pubspec.yaml`).
     - please note, that only `.jpg` images are supported at this time
-2. Place `ARQuidoView` widget in your view's code. Provide at least an array of image names you want to detect (through `referenceImageNames` property) and a callback for detected images (through `onImageDetected` property):
+2. Place `ARQuidoView` widget in your view's code. Provide at least an array of
+image names you want to detect (through `referenceImageNames` property) and a 
+callback for detected images (through `onImageDetected` property):
    ```dart
     ARQuidoView(
       referenceImageNames: const ['applandroid'],
@@ -53,12 +64,19 @@ platform :ios, '13.0'
    ```
 3. That's it, you're all set ⚓
 
-Please see the [example](https://github.com/miquido/AR_quido/tree/main/example) for more info. You can also check the details in [API Documentation](https://pub.dev/documentation/ar_quido/latest/), but please note, that it's still work in progress.
+Please see the [example](https://github.com/miquido/AR_quido/tree/main/example)
+for more info. You can also check the details in [API Documentation](https://pub.dev/documentation/ar_quido/latest/),
+but please note, that it's still work in progress.
 
 ## Disclaimer
-"EasyAR" is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
+"EasyAR" is the registered trademark or trademark of VisionStar Information 
+Technology (Shanghai) Co., Ltd in China and other countries for the augmented
+reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
 
-The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software.
+The copyright notices in the Software and this entire statement, including the above
+license grant, this restriction and the following disclaimer, must be included 
+in all copies of the Software, in whole or in part, and all derivative works
+of the Software.
 
 
 ---
