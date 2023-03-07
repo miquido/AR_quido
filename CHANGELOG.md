@@ -1,3 +1,7 @@
+## 0.1.3
+* Added remaining documentation for public APIs
+* Fixed setup instructions for Android in README  
+
 ## 0.1.2
 * Added the API documentation
 
