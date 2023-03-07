@@ -1,6 +1,6 @@
 name: ar_quido
 description: A Flutter plugin for handling image recognition on mobile platforms
-version: 0.1.1
+version: 0.1.2
 repository: https://github.com/miquido/ar_quido
 issue_tracker: https://github.com/miquido/ar_quido/issues
 homepage: https://github.com/miquido/ar_quido
