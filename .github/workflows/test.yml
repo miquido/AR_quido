@@ -1,0 +1,33 @@
+name: Run tests and static checks
+
+on:
+  push:
+    branches: 
+    - main
+  pull_request:
+    branches:
+    - main
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2.4.0
+        with:
+          flutter-version: '3.7.6'
+      - name: Restore packages
+        run: flutter pub get
+      - name: Generate required files
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      - name: Analyze
+        run: flutter analyze
+      - name: Run tests
+        run: flutter test --coverage
+
+
+
