@@ -1,6 +1,14 @@
 import 'package:ar_quido/ar_quido.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+/// The interface that platform-specific implementations of `ar_quido` must extend.
+///
+/// Avoid `implements` of this interface. Using `implements` makes adding any new
+/// methods here a breaking change for end users of your platform!
+///
+/// Do `extends GoogleMapsFlutterPlatform` instead, so new methods added here are
+/// inherited in your code with the default implementation (that throws at runtime),
+/// rather than breaking your users at compile time.
 abstract class ARQuidoPlatform extends PlatformInterface {
   /// Constructs a ImageRecognitionScannerPlatform.
   ARQuidoPlatform() : super(token: _token);
@@ -24,6 +32,7 @@ abstract class ARQuidoPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  /// Initializes the platform interface.
   void init() {
     throw UnimplementedError('init() has not been implemented.');
   }

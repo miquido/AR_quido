@@ -4,6 +4,8 @@ import 'package:ar_quido/ar_quido.dart';
 
 /// Controller for a single ARQuidoView instance running on the host platform.
 class ARQuidoViewController {
+  /// Instantiates the controller with scanner's view state that this controller
+  /// instance is attached to.
   ARQuidoViewController(this._scannerViewState) {
     ARQuidoPlatform.instance.init();
     _connectStreams();

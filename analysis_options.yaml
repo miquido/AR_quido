@@ -1,5 +1,9 @@
 include: package:lint_quido/miquido_lints.yaml
 
+linter:
+  rules:
+    - public_member_api_docs
+
 dart_code_metrics:
   rules:
     - avoid-top-level-members-in-tests: false
