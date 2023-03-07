@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:ar_quido/ar_quido.dart';
 
+/// Controller for a single ARQuidoView instance running on the host platform.
 class ARQuidoViewController {
   ARQuidoViewController(this._scannerViewState) {
     ARQuidoPlatform.instance.init();
@@ -11,12 +12,17 @@ class ARQuidoViewController {
   final ARQuidoViewState _scannerViewState;
   final List<StreamSubscription<dynamic>> _subscriptions = [];
 
+  /// Disposes the controller resources (event stream subscriptions).
   void dispose() {
     for (final subscription in _subscriptions) {
       subscription.cancel();
     }
   }
 
+  /// Sets the current state of the device's flashlight.
+  ///
+  /// The returned [Future] completes after the switch has been triggered on the
+  /// platform side.
   Future<void> toggleFlashlight({required bool shouldTurnOn}) {
     return ARQuidoPlatform.instance.toggleFlashlight(
       shouldTurnOn: shouldTurnOn,
