@@ -115,6 +115,22 @@ void main() {
     expect(receivedMessage, isA<ImageDetectedEvent>());
     expect(receivedMessage.imageName, equals('applandroid'));
   });
+
+  test('Image tapped event is fired correctly', () async {
+    final detectedImageTappedStream =
+        StreamQueue(platform.onDetectedImageTapped());
+    await _sendPlatformMessage(
+      'scanner#onDetectedImageTapped',
+      <String, Object?>{
+        'imageName': 'applandroid',
+      },
+    );
+
+    final receivedMessage = await detectedImageTappedStream.next;
+    expect(detectedImageTappedStream.eventsDispatched, equals(1));
+    expect(receivedMessage, isA<ImageTappedEvent>());
+    expect(receivedMessage.imageName, equals('applandroid'));
+  });
 }
 
 Future<void> _sendPlatformMessage(
