@@ -20,7 +20,7 @@ Add the dependency in your `pubspec.yaml`:
 - directly in pubspec.yaml:
   ```yaml
   dependencies:
-     ar_quido: 0.1.3
+     ar_quido: 0.1.4
   ```
 ### Android
 Since the Android version depends on the EasyAR solution, you need to
@@ -65,8 +65,7 @@ callback for detected images (through `onImageDetected` property):
 3. That's it, you're all set ⚓
 
 Please see the [example](https://github.com/miquido/AR_quido/tree/main/example)
-for more info. You can also check the details in [API Documentation](https://pub.dev/documentation/ar_quido/latest/),
-but please note, that it's still work in progress.
+for more info. You can also check the details in [API Documentation](https://pub.dev/documentation/ar_quido/latest/).
 
 ## Disclaimer
 "EasyAR" is the registered trademark or trademark of VisionStar Information 

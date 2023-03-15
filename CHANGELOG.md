@@ -1,3 +1,6 @@
+## 0.1.4
+* Improved performance to fix a bug causing an OutOfMemoryError on some Android devices
+
 ## 0.1.3
 * Added remaining documentation for public APIs
 * Fixed setup instructions for Android in README  

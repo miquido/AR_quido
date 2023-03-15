@@ -46,7 +46,7 @@ class ARImageRecognizer(private val imageNames: List<String>) {
         outputFrameFork = OutputFrameFork.create(2)
 
         val cameraStatus = camera?.openWithPreferredType(CameraDeviceType.Back) ?: false
-        camera?.setSize(Vec2I(1280, 720))
+        camera?.setSize(Vec2I(640, 480))
         camera?.setFocusMode(CameraDeviceFocusMode.Continousauto)
 
         if (!cameraStatus) {
@@ -79,7 +79,6 @@ class ARImageRecognizer(private val imageNames: List<String>) {
 
         //CameraDevice and rendering each require an additional buffer
         camera?.setBufferCapacity(throttler!!.bufferRequirement() + i2FAdapter!!.bufferRequirement() + outputFrameBuffer!!.bufferRequirement() + trackerBufferRequirement + 2)
-
         return true
     }
 
@@ -213,12 +212,12 @@ class ARImageRecognizer(private val imageNames: List<String>) {
     }
 
     private fun prepareImageTracker(): ImageTracker {
-        val tracker = ImageTracker.create()
+        val tracker = ImageTracker.createWithMode(ImageTrackerMode.PreferPerformance)
         for (imageName in imageNames) {
             val filePath = REFERENCE_IMAGES_DIRECTORY_PATH + imageName + REFERENCE_IMAGE_FILE_EXTENSION
             loadFromImage(tracker, filePath, imageName)
         }
-        tracker.setSimultaneousNum(imageNames.size)
+        tracker.setSimultaneousNum(6)
         return tracker
     }
 
