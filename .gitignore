@@ -36,3 +36,6 @@ build/
 *.g.dart
 *.freezed.dart
 *.mocks.dart
+
+# Test coverage
+coverage/

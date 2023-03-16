@@ -2,11 +2,18 @@ import 'dart:async';
 
 import 'package:ar_quido/ar_quido.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 /// An implementation of [ARQuidoPlatform] that uses method channels.
 class ARQuidoMethodChannel extends ARQuidoPlatform {
+  static const String _androidViewType =
+      'plugins.miquido.com/ar_quido_view_android';
+  static const String _iOSViewType = 'plugins.miquido.com/ar_quido_view_ios';
+
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('plugins.miquido.com/ar_quido');
@@ -57,6 +64,65 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
   @override
   Stream<ErrorEvent> onError() =>
       _scannerEventStreamController.stream.whereType<ErrorEvent>();
+
+  @override
+  Widget buildView(
+    PlatformViewCreatedCallback onPlatformViewCreated, {
+    required List<String> referenceImageNames,
+  }) {
+    final creationParams = _buildCreationParams(referenceImageNames);
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      return PlatformViewLink(
+        viewType: ARQuidoMethodChannel._androidViewType,
+        surfaceFactory: (context, controller) {
+          return AndroidViewSurface(
+            controller: controller as AndroidViewController,
+            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+          );
+        },
+        onCreatePlatformView: (params) => _onCreatePlatformView(
+          params,
+          creationParams,
+          onPlatformViewCreated,
+        ),
+      );
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return UiKitView(
+        viewType: ARQuidoMethodChannel._iOSViewType,
+        layoutDirection: TextDirection.ltr,
+        creationParams: creationParams,
+        creationParamsCodec: const StandardMessageCodec(),
+        gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+        onPlatformViewCreated: onPlatformViewCreated,
+      );
+    } else {
+      throw Exception('$defaultTargetPlatform is not supported by ARQuidoView');
+    }
+  }
+
+  AndroidViewController _onCreatePlatformView(
+    PlatformViewCreationParams params,
+    Map<String, dynamic> creationParams,
+    PlatformViewCreatedCallback onPlatformViewCreated,
+  ) {
+    final viewId = params.id;
+    return PlatformViewsService.initAndroidView(
+      id: viewId,
+      viewType: ARQuidoMethodChannel._androidViewType,
+      layoutDirection: TextDirection.ltr,
+      creationParams: creationParams,
+      creationParamsCodec: const StandardMessageCodec(),
+    )
+      ..addOnPlatformViewCreatedListener(params.onPlatformViewCreated)
+      ..addOnPlatformViewCreatedListener(onPlatformViewCreated)
+      ..create();
+  }
+
+  Map<String, dynamic> _buildCreationParams(List<String> referenceImageNames) =>
+      <String, dynamic>{
+        'referenceImageNames': referenceImageNames,
+      };
 
   Future<void> _handleMethodCall(MethodCall call) async {
     switch (call.method) {

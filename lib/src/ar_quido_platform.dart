@@ -1,4 +1,6 @@
 import 'package:ar_quido/ar_quido.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 /// The interface that platform-specific implementations of `ar_quido` must extend.
@@ -81,6 +83,14 @@ abstract class ARQuidoPlatform extends PlatformInterface {
   /// error.
   Stream<ErrorEvent> onError() {
     throw UnimplementedError('onError() has not been implemented.');
+  }
+
+  /// Returns a widget displaying the scanner view.
+  Widget buildView(
+    PlatformViewCreatedCallback onPlatformViewCreated, {
+    required List<String> referenceImageNames,
+  }) {
+    throw UnimplementedError('buildView() has not been implemented.');
   }
 
   /// Dispose of whatever resources the platform is holding on to.
