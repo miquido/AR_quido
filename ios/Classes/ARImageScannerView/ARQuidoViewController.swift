@@ -242,7 +242,7 @@ extension ARQuidoViewController: ImageRecognitionDelegate {
     }
     
     func onRecognitionStarted() {
-        methodChannel.invokeMethod("scanner#start", arguments: [:])
+        methodChannel.invokeMethod("scanner#start", arguments: [String:Any]())
     }
     
     func onDetect(imageKey: String) {

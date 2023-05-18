@@ -128,28 +128,22 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
     switch (call.method) {
       case 'scanner#start':
         _scannerEventStreamController.add(RecognitionStartedEvent());
-        break;
       case 'scanner#recognitionPaused':
         _scannerEventStreamController.add(RecognitionPausedEvent());
-        break;
       case 'scanner#recognitionResumed':
         _scannerEventStreamController.add(RecognitionResumedEvent());
-        break;
       case 'scanner#onImageDetected':
         final arguments = (call.arguments as Map).cast<String, String?>();
         final imageName = arguments['imageName'];
         _scannerEventStreamController.add(ImageDetectedEvent(imageName));
-        break;
       case 'scanner#onDetectedImageTapped':
         final arguments = (call.arguments as Map).cast<String, String?>();
         final imageName = arguments['imageName'];
         _scannerEventStreamController.add(ImageTappedEvent(imageName));
-        break;
       case 'scanner#error':
         final arguments = (call.arguments as Map).cast<String, String?>();
         final error = arguments['errorCode'];
         _scannerEventStreamController.add(ErrorEvent(error!));
-        break;
       default:
         throw MissingPluginException();
     }

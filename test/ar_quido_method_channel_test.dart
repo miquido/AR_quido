@@ -12,7 +12,7 @@ void main() {
   setUpAll(platform.init);
 
   setUp(() {
-    TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
       platform.methodChannel,
       (message) async {
@@ -139,7 +139,7 @@ Future<void> _sendPlatformMessage(
 ) async {
   final byteData =
       const StandardMethodCodec().encodeMethodCall(MethodCall(method, data));
-  await TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+  await TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
       .handlePlatformMessage(
     'plugins.miquido.com/ar_quido',
     byteData,
