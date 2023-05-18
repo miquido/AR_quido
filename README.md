@@ -20,7 +20,7 @@ Add the dependency in your `pubspec.yaml`:
 - directly in pubspec.yaml:
   ```yaml
   dependencies:
-     ar_quido: 0.1.4
+     ar_quido: 0.1.5
   ```
 ### Android
 Since the Android version depends on the EasyAR solution, you need to
@@ -41,10 +41,10 @@ in Info.plist:
 <string>Describe why your app needs camera (AR) here.</string>
 ```
 
-Also make sure, that your deployment target in project settings is set to 13.0.
+Also make sure, that your deployment target in project settings is set to at least 14.0.
 Set the same version in `ios/Podfile`:
 ```ruby
-platform :ios, '13.0'
+platform :ios, '14.0'
 ```
 
 ## Usage 🌴
