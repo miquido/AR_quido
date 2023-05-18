@@ -71,34 +71,35 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
     required List<String> referenceImageNames,
   }) {
     final creationParams = _buildCreationParams(referenceImageNames);
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      return PlatformViewLink(
-        viewType: ARQuidoMethodChannel._androidViewType,
-        surfaceFactory: (context, controller) {
-          return AndroidViewSurface(
-            controller: controller as AndroidViewController,
-            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-          );
-        },
-        onCreatePlatformView: (params) => _onCreatePlatformView(
-          params,
-          creationParams,
-          onPlatformViewCreated,
+    return switch (defaultTargetPlatform) {
+      TargetPlatform.android => PlatformViewLink(
+          viewType: ARQuidoMethodChannel._androidViewType,
+          surfaceFactory: (context, controller) {
+            return AndroidViewSurface(
+              controller: controller as AndroidViewController,
+              hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+              gestureRecognizers: const <Factory<
+                  OneSequenceGestureRecognizer>>{},
+            );
+          },
+          onCreatePlatformView: (params) => _onCreatePlatformView(
+            params,
+            creationParams,
+            onPlatformViewCreated,
+          ),
         ),
-      );
-    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      return UiKitView(
-        viewType: ARQuidoMethodChannel._iOSViewType,
-        layoutDirection: TextDirection.ltr,
-        creationParams: creationParams,
-        creationParamsCodec: const StandardMessageCodec(),
-        gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-        onPlatformViewCreated: onPlatformViewCreated,
-      );
-    } else {
-      throw Exception('$defaultTargetPlatform is not supported by ARQuidoView');
-    }
+      TargetPlatform.iOS => UiKitView(
+          viewType: ARQuidoMethodChannel._iOSViewType,
+          layoutDirection: TextDirection.ltr,
+          creationParams: creationParams,
+          creationParamsCodec: const StandardMessageCodec(),
+          gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+          onPlatformViewCreated: onPlatformViewCreated,
+        ),
+      _ => throw Exception(
+          '$defaultTargetPlatform is not supported by ARQuidoView',
+        ),
+    };
   }
 
   AndroidViewController _onCreatePlatformView(
