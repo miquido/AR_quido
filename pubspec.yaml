@@ -8,21 +8,21 @@ documentation: https://pub.dev/documentation/ar_quido/latest/
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
-  flutter: ">=3.10.1"
+  flutter: ">=3.10.6"
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.1.4
+  plugin_platform_interface: ^2.1.4 
   stream_transform: ^2.1.0
 
 dev_dependencies:
   async: 2.11.0
-  build_runner: 2.4.4
+  build_runner: 2.4.6
   flutter_test:
     sdk: flutter
   lint_quido: 1.10.0
-  mockito: 5.4.0
+  mockito: 5.4.2
 
 
 flutter:

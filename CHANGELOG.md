@@ -1,5 +1,5 @@
 ## 0.1.5
-* Updated the project to match Flutter 3.10, Dart 3, Gradle 8 and Xcode 14.3
+* Updated the project to match Flutter 3.10.6, Dart 3, Gradle 8 and Xcode 14.3
 
 ## 0.1.4
 * Improved performance to fix a bug causing an OutOfMemoryError on some Android devices
