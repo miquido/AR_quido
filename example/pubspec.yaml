@@ -11,12 +11,12 @@ dependencies:
   cupertino_icons: 1.0.5
   flutter:
     sdk: flutter
-  permission_handler: 10.2.0
+  permission_handler: 10.4.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  lint_quido: 0.4.0
+  lint_quido: 1.10.0
 
 
 flutter:

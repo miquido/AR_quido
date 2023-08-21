@@ -71,34 +71,35 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
     required List<String> referenceImageNames,
   }) {
     final creationParams = _buildCreationParams(referenceImageNames);
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      return PlatformViewLink(
-        viewType: ARQuidoMethodChannel._androidViewType,
-        surfaceFactory: (context, controller) {
-          return AndroidViewSurface(
-            controller: controller as AndroidViewController,
-            hitTestBehavior: PlatformViewHitTestBehavior.opaque,
-            gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-          );
-        },
-        onCreatePlatformView: (params) => _onCreatePlatformView(
-          params,
-          creationParams,
-          onPlatformViewCreated,
+    return switch (defaultTargetPlatform) {
+      TargetPlatform.android => PlatformViewLink(
+          viewType: ARQuidoMethodChannel._androidViewType,
+          surfaceFactory: (context, controller) {
+            return AndroidViewSurface(
+              controller: controller as AndroidViewController,
+              hitTestBehavior: PlatformViewHitTestBehavior.opaque,
+              gestureRecognizers: const <Factory<
+                  OneSequenceGestureRecognizer>>{},
+            );
+          },
+          onCreatePlatformView: (params) => _onCreatePlatformView(
+            params,
+            creationParams,
+            onPlatformViewCreated,
+          ),
         ),
-      );
-    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      return UiKitView(
-        viewType: ARQuidoMethodChannel._iOSViewType,
-        layoutDirection: TextDirection.ltr,
-        creationParams: creationParams,
-        creationParamsCodec: const StandardMessageCodec(),
-        gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
-        onPlatformViewCreated: onPlatformViewCreated,
-      );
-    } else {
-      throw Exception('$defaultTargetPlatform is not supported by ARQuidoView');
-    }
+      TargetPlatform.iOS => UiKitView(
+          viewType: ARQuidoMethodChannel._iOSViewType,
+          layoutDirection: TextDirection.ltr,
+          creationParams: creationParams,
+          creationParamsCodec: const StandardMessageCodec(),
+          gestureRecognizers: const <Factory<OneSequenceGestureRecognizer>>{},
+          onPlatformViewCreated: onPlatformViewCreated,
+        ),
+      _ => throw Exception(
+          '$defaultTargetPlatform is not supported by ARQuidoView',
+        ),
+    };
   }
 
   AndroidViewController _onCreatePlatformView(
@@ -128,28 +129,22 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
     switch (call.method) {
       case 'scanner#start':
         _scannerEventStreamController.add(RecognitionStartedEvent());
-        break;
       case 'scanner#recognitionPaused':
         _scannerEventStreamController.add(RecognitionPausedEvent());
-        break;
       case 'scanner#recognitionResumed':
         _scannerEventStreamController.add(RecognitionResumedEvent());
-        break;
       case 'scanner#onImageDetected':
         final arguments = (call.arguments as Map).cast<String, String?>();
         final imageName = arguments['imageName'];
         _scannerEventStreamController.add(ImageDetectedEvent(imageName));
-        break;
       case 'scanner#onDetectedImageTapped':
         final arguments = (call.arguments as Map).cast<String, String?>();
         final imageName = arguments['imageName'];
         _scannerEventStreamController.add(ImageTappedEvent(imageName));
-        break;
       case 'scanner#error':
         final arguments = (call.arguments as Map).cast<String, String?>();
         final error = arguments['errorCode'];
         _scannerEventStreamController.add(ErrorEvent(error!));
-        break;
       default:
         throw MissingPluginException();
     }
