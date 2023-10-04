@@ -182,7 +182,7 @@ class ARImageRecognizer(private val imageNames: List<String>) {
                 if (result != null) {
                     for (targetInstance in result.targetInstances()) {
                         val status = targetInstance.status()
-                        if (status == TargetStatus.Tracked) {
+                        if (status == TargetStatus.Tracking) {
                             val target = targetInstance.target()
                             val imagetarget = (if (target is ImageTarget) target else null)
                                 ?: continue
