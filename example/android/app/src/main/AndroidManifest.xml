@@ -32,6 +32,6 @@
        <!-- Paste your API Key below -->
        <meta-data
            android:name="com.miquido.ar_quido.API_KEY"
-           android:value="<YOUR_API_KEY>" />
+           android:value="<YOUR_SENSE_LICENSE_KEY>" />
     </application>
 </manifest>

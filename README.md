@@ -25,12 +25,14 @@ Add the dependency in your `pubspec.yaml`:
 ### Android
 Since the Android version depends on the EasyAR solution, you need to
 [sign up](https://www.easyar.com/view/signUp.html) on their page and obtain 
-an API key. After doing so, provide the key in Android Manifest file as 
+a "Sense Authorization" License Key. It can be done through the [EasyAR Dashboard](https://portal.easyar.com/sdk/list).
+
+After doing so, provide the key in Android Manifest file as 
 `application`'s metadata:
 ```xml
 <meta-data
            android:name="com.miquido.ar_quido.API_KEY"
-           android:value="<YOUR_API_KEY>" />
+           android:value="<YOUR_SENSE_LICENSE_KEY>" />
 ```
 
 ### iOS
