@@ -1,0 +1,3 @@
+-keep class cn.easyar.** { *; }
+-keepattributes SourceFile,LineNumberTable
+-keep public class * extends java.lang.Exception
