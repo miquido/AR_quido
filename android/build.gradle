@@ -2,14 +2,14 @@ group 'com.miquido.ar_quido'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.7.21'
+    ext.kotlin_version = '1.9.10'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.2'
+        classpath 'com.android.tools.build:gradle:8.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -26,7 +26,6 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.miquido.ar_quido'
-    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -42,6 +41,7 @@ android {
     }
 
     defaultConfig {
+        compileSdk 34
         minSdkVersion 23
     }
 
