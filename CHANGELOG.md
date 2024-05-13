@@ -1,6 +1,7 @@
 ## 0.3.0
 
 * Updated the project to match Flutter 3.19.6
+* Added Proguard config section in the Readme
 
 ## 0.2.0
 
