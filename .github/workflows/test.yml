@@ -2,11 +2,11 @@ name: Run tests and static checks
 
 on:
   push:
-    branches: 
-    - main
+    branches:
+      - main
   pull_request:
     branches:
-    - main
+      - main
   workflow_dispatch:
 
 env:
@@ -34,12 +34,18 @@ jobs:
       - name: Run tests
         run: flutter test --coverage
   validate-for-pub:
-    name: 'Perform dry run for pub.dev publish'
+    name: "Perform dry run for pub.dev publish"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: dart-lang/setup-dart@v1
-      - name: Install dependencies
-        run: dart pub get
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2.4.0
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      # - name: Install dependencies
+      #   run: dart pub get
       - name: Publish - dry run
-        run: dart pub publish --dry-run
+        run: flutter pub publish --dry-run
