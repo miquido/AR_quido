@@ -8,7 +8,7 @@ documentation: https://pub.dev/documentation/ar_quido/latest/
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
-  flutter: ^3.19.6
+  flutter: '>=3.19.6'
 
 dependencies:
   flutter:
