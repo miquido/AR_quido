@@ -2,12 +2,15 @@ name: Run tests and static checks
 
 on:
   push:
-    branches: 
-    - main
+    branches:
+      - main
   pull_request:
     branches:
-    - main
+      - main
   workflow_dispatch:
+
+env:
+  FLUTTER_VERSION: 3.19.6
 
 jobs:
   tests:
@@ -15,11 +18,13 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install and set Flutter version
         uses: subosito/flutter-action@v2.4.0
         with:
-          flutter-version: '3.13.6'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
       - name: Restore packages
         run: flutter pub get
       - name: Generate required files
@@ -28,6 +33,16 @@ jobs:
         run: flutter analyze
       - name: Run tests
         run: flutter test --coverage
-
-
-
+  validate-for-pub:
+    name: "Perform dry run for pub.dev publish"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install and set Flutter version
+        uses: subosito/flutter-action@v2.4.0
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: stable
+          cache: true
+      - name: Publish - dry run
+        run: flutter pub publish --dry-run
