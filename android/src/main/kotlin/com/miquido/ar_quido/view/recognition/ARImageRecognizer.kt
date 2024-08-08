@@ -133,6 +133,9 @@ class ARImageRecognizer(private val imageNames: List<String>) {
 
     fun render(width: Int, height: Int, screenRotation: Int) {
         if (scheduler == null) return
+        while (scheduler!!.runOne()) {
+            // warm-up
+        }
 
         GLES30.glViewport(0, 0, width, height)
         GLES30.glClearColor(0f, 0f, 0f, 1f)

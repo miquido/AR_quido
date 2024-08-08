@@ -11,7 +11,10 @@ import android.util.Log
 import android.view.Display
 import android.view.Surface
 import android.view.View
+import android.widget.Toast
+import cn.easyar.CameraDevice
 import cn.easyar.Engine
+import cn.easyar.ImageTracker
 import com.miquido.ar_quido.view.recognition.ARImageRecognizer
 import com.miquido.ar_quido.view.recognition.ErrorCode
 import com.miquido.ar_quido.view.recognition.ImageRecognitionListener
@@ -71,6 +74,14 @@ class ARQuidoView(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+        if (!CameraDevice.isAvailable()) {
+            Toast.makeText(context, "CameraDevice not available.", Toast.LENGTH_LONG).show()
+            return
+        }
+        if (!ImageTracker.isAvailable()) {
+            Toast.makeText(context, "ImageTracker not available.", Toast.LENGTH_LONG).show()
+            return
+        }
 
         synchronized(recognizer) {
             if (recognizer.initialize(onActionsCallback)) {
