@@ -24,7 +24,7 @@ Add the dependency in your `pubspec.yaml`:
 
   ```yaml
   dependencies:
-     ar_quido: 0.2.0
+     ar_quido: 0.4.0
   ```
 
 ### Android
@@ -106,6 +106,7 @@ in all copies of the Software, in whole or in part, and all derivative works
 of the Software.
 
 ---
+
 #### About Miquido
 
 - [About](https://careers.miquido.com/about-us/)

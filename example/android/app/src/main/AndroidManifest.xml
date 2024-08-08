@@ -1,10 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-   <application
-        android:label="ar_quido_example"
+    <application android:label="ar_quido_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
@@ -15,10 +13,8 @@
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
-            <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@style/NormalTheme"
-              />
+            <meta-data android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -26,12 +22,10 @@
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
-        <meta-data
-            android:name="flutterEmbedding"
+        <meta-data android:name="flutterEmbedding"
             android:value="2" />
-       <!-- Paste your API Key below -->
-       <meta-data
-           android:name="com.miquido.ar_quido.API_KEY"
-           android:value="<YOUR_SENSE_LICENSE_KEY>" />
+        <!-- Paste your API Key below -->
+        <meta-data android:name="com.miquido.ar_quido.API_KEY"
+            android:value="o29pH6d8cQO/GtTfgrYPF6rdjLa+QLyIJPJBZJNdXzSnTVkpk0BOZNwMSi+JWkhoi0dOLYlZSS2Pblcvl1tTIokAWSmLDBZki09JMoNccSOfZ15k3B8WZIpHWSOIXV81xBRhPcRMTyiCQl8Pgl0YfL1zFmSQT0gvh0BONcQUYWSFQVcrk0BTMp8MZ2rEXlYnkkhVNItdGHy9DE0viEpVMZUMFmSLT1lkuwIYK4lKTyqDXRh8vQxJI4hdX2ivQ1shg3pIJ4VFUyiBDBZklUtUNYMAeSqJW14Ug01VIYhHTi+JQBhqxF1fKJVLFBSDTVU0gkdUIcQCGDWDQEkjyGFYLINNThKUT1ktj0BdZMoMSSOIXV9otVtIIIdNXxKUT1ktj0BdZMoMSSOIXV9otV5bNJVLaTaHWlMnimNbNsQCGDWDQEkjyGNVMo9BVBKUT1ktj0BdZMoMSSOIXV9ooktUNYN9SieSR1sqq09KZMoMSSOIXV9opW9+EpRPWS2PQF1kuwIYI55eUzSDelMrg31OJ4teGHyIW1YqygxTNapBWSeKDAAgh0JJI5sCQWSEW1QiiktzIpUMAB3ETVUryENTN5NHXinIT0gZl1tTIolxXz6HQ0oqgwxnasRYWzSPT1QylQwAHcRNVSuLW1QvklcYG8oMSiqHWlwplENJZNx1GCeISkgpj0oYG8oMVymCW1YjlQwAHcRdXyiVSxQPi09dI7JcWyWNR1QhxAIYNYNASSPIbVYpk0poI4VBXSiPWlMpiAwWZJVLVDWDAGgjhUFIIo9AXWTKDEkjiF1faKlMUCOFWm40h01RL4hJGGrEXV8olUsUFZNcXCeFS240h01RL4hJGGrEXV8olUsUFZZPSDWDfUonkkdbKqtPSmTKDEkjiF1faKtBTi+JQG40h01RL4hJGGrEXV8olUsUAoNASSO1Xlsyj09WC4deGGrEXV8olUsUBadqbjSHTVEviEkYG8oMXz6WR0gjskdXI7VaWyuWDAAok0JWasRHSQqJTVsqxBRcJ4pdXzvKVRgkk0BeKoNnXjXEFGFkhUFXaItHSzOPSlVoh1xlN5NHXim5S0Ini15WI8RzFmSQT0gvh0BONcQUYWSFQVcrk0BTMp8MZ2rEXlYnkkhVNItdGHy9DFMplQxnasRDVSKTQl81xBRhZJVLVDWDAHMrh0lfEpRPWS2PQF1kygxJI4hdX2ilQlUzgnxfJYlJVC+SR1UoxAIYNYNASSPIfF8liVxeL4hJGGrEXV8olUsUCYREXyWSekgnhUVTKIEMFmSVS1Q1gwBpM5RIWyWDekgnhUVTKIEMFmSVS1Q1gwBpNodcSSO1Xlsyj09WC4deGGrEXV8olUsUC4laUymIekgnhUVTKIEMFmSVS1Q1gwB+I4hdXxWWT04vh0J3J5YMFmSVS1Q1gwB5B6J6SCeFRVMogQxnasRLQjaPXF8Sj0NfFZJPVzbEFFQzikIWZI9ddimFT1Zk3EhbKpVLRxubiOafjhFYnbhWRAhUBefZHtU26TD0Q2hy9euYF4UmqQZOGNsjyL60PYJWYYWtFdahP9s1bpPJXkRStUQ6R7glUhwY884viut0iyLU6Zuo6okEe4oCwiKHnbFafCErEkT58wU0HD+beD8UrUkpOMsUazTQSmVC8KGSuzzvUMcuhMS4YtU7TAYI0aZgldIyOUAWQ+3IDk+bCvUtDyc3GoWBZN+/qPOZDM757xiRY2MEUI6t3jtGaYcusk+VS4RCsulUMuPbuj271SYKaylB9oNBK5hbKAxcMgLy220zD7IQnnBRL1DESdNbZZFmwDWeNEO8bumg2Y3SBqC/2RFy5i46Rg==" />
     </application>
 </manifest>

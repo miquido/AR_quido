@@ -1,14 +1,14 @@
 name: ar_quido
 description: A Flutter plugin for handling image recognition on mobile platforms
-version: 0.3.0
+version: 0.4.0
 repository: https://github.com/miquido/ar_quido
 issue_tracker: https://github.com/miquido/ar_quido/issues
 homepage: https://github.com/miquido/ar_quido
 documentation: https://pub.dev/documentation/ar_quido/latest/
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
-  flutter: '>=3.19.6'
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.2'
 
 dependencies:
   flutter:
@@ -18,7 +18,7 @@ dependencies:
 
 dev_dependencies:
   async: 2.11.0
-  build_runner: 2.4.9
+  build_runner: 2.4.11
   flutter_test:
     sdk: flutter
   lint_quido: 1.16.0

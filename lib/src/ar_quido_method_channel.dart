@@ -108,7 +108,7 @@ class ARQuidoMethodChannel extends ARQuidoPlatform {
     PlatformViewCreatedCallback onPlatformViewCreated,
   ) {
     final viewId = params.id;
-    return PlatformViewsService.initAndroidView(
+    return PlatformViewsService.initSurfaceAndroidView(
       id: viewId,
       viewType: ARQuidoMethodChannel._androidViewType,
       layoutDirection: TextDirection.ltr,

@@ -1,3 +1,8 @@
+## 0.4.0
+
+* Updated the project to match Flutter 3.22.2
+* Fixed an issue with blank ARQuidoView on Android
+
 ## 0.3.0
 
 * Updated the project to match Flutter 3.19.6
